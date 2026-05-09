@@ -245,7 +245,7 @@ const PORT = process.env.PORT || 5000;
 // ================= MIDDLEWARE =================
 app.use(
   cors({
-    origin: "https://plated-hangout-355004.web.app",
+    origin: "https://plated-hangout-355004.web.app", // Change this if your frontend is hosted elsewhere
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
@@ -322,7 +322,15 @@ const orderSchema = new mongoose.Schema({
   },
   items: Array,
   total: Number,
-  address: String,
+  address: {
+    name: String,
+    line1: String,
+    line2: String,
+    city: String,
+    pincode: String,
+    phone: String,
+  },
+  paymentMethod: String,
   status: {
     type: String,
     default: "Confirmed",
